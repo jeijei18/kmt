@@ -117,7 +117,7 @@ html,body{
 
 
 /* =========================================================
-   ENTER BUTTON
+   ENTER LAB BUTTON
 ========================================================= */
 
 
@@ -128,16 +128,304 @@ html,body{
     border-radius:50px;
 
 
-    background:
-        linear-gradient(
-            135deg,
-            #36c9ff,
-            #197cff
-        );
+    <span>
+                ENTER LAB
+            </span>
+
+            <strong>→</strong>
+
+        </button>
+
+    </div>
 
 
-    color:white;
+    <div class="welcome-footer">
 
+        <span>
+            INTERACTIVE LEARNING ENVIRONMENT
+        </span>
+
+        <span>
+            KMT • PARTICLE MOTION • MATTER
+        </span>
+
+    </div>
+
+</div>
+<!-- =====================================================
+     CHEMISTRY LAB BACKGROUND
+===================================================== -->
+
+<div class="lab-room">
+
+    <!-- Ceiling light -->
+    <div class="ceiling-light light-left"></div>
+    <div class="ceiling-light light-center"></div>
+    <div class="ceiling-light light-right"></div>
+
+
+    <!-- Back wall panels -->
+    <div class="wall-panel panel-left"></div>
+    <div class="wall-panel panel-right"></div>
+
+
+    <!-- =================================================
+         LEFT SHELF
+    ================================================== -->
+
+    <div class="lab-shelf left-shelf">
+
+        <div class="shelf-board shelf-top"></div>
+
+        <div class="bottle bottle-blue">
+            <div class="bottle-neck"></div>
+            <div class="bottle-liquid"></div>
+        </div>
+
+        <div class="bottle bottle-green">
+            <div class="bottle-neck"></div>
+            <div class="bottle-liquid"></div>
+        </div>
+
+        <div class="bottle bottle-purple">
+            <div class="bottle-neck"></div>
+            <div class="bottle-liquid"></div>
+        </div>
+
+        <div class="bottle bottle-orange">
+            <div class="bottle-neck"></div>
+            <div class="bottle-liquid"></div>
+        </div>
+
+        <div class="shelf-board shelf-bottom"></div>
+
+    </div>
+
+
+    <!-- =================================================
+         TEST TUBE RACK
+    ================================================== -->
+
+    <div class="test-tube-rack">
+
+        <div class="rack">
+
+            <div class="test-tube tube-blue">
+                <span></span>
+            </div>
+
+            <div class="test-tube tube-purple">
+                <span></span>
+            </div>
+
+            <div class="test-tube tube-green">
+                <span></span>
+            </div>
+
+            <div class="test-tube tube-yellow">
+                <span></span>
+            </div>
+
+            <div class="test-tube tube-red">
+                <span></span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SAFETY POSTER
+    ================================================== -->
+
+    <div class="safety-poster">
+
+        <div class="poster-title">
+            LAB SAFETY
+        </div>
+
+        <div class="safety-item">
+            <b>◉</b>
+            WEAR GOGGLES
+        </div>
+
+        <div class="safety-item">
+            <b>♢</b>
+            WEAR GLOVES
+        </div>
+
+        <div class="safety-item">
+            <b>×</b>
+            NO FOOD OR DRINK
+        </div>
+
+        <div class="safety-item">
+            <b>!</b>
+            KEEP AREA CLEAN
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RIGHT CHALKBOARD
+    ================================================== -->
+
+    <div class="chalkboard">
+
+        <div class="chalk-title">
+            KMT PRINCIPLES
+        </div>
+
+        <div class="chalk-line">
+            • Matter is made of tiny particles.
+        </div>
+
+        <div class="chalk-line">
+            • Particles are in constant motion.
+        </div>
+
+        <div class="chalk-line">
+            • Particles collide with each other.
+        </div>
+
+        <div class="chalk-line">
+            • Higher temperature means
+              faster particles.
+        </div>
+
+        <div class="chalk-formula">
+            TEMPERATURE ↑
+            <br>
+            PARTICLE SPEED ↑
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RIGHT SIDE LAB GLASSWARE
+    ================================================== -->
+
+    <div class="background-flask flask-one">
+
+        <div class="flask-liquid"></div>
+
+    </div>
+
+    <div class="background-flask flask-two">
+
+        <div class="flask-liquid"></div>
+
+    </div>
+
+    <div class="background-flask flask-three">
+
+        <div class="flask-liquid"></div>
+
+    </div>
+
+
+    <!-- =================================================
+         LAB TABLE
+    ================================================== -->
+
+    <div class="lab-table">
+
+        <div class="table-surface"></div>
+
+        <div class="table-front"></div>
+
+    </div>
+
+
+    <!-- =================================================
+         MICROSCOPE
+    ================================================== -->
+
+    <div class="microscope">
+
+        <div class="microscope-base"></div>
+
+        <div class="microscope-body"></div>
+
+        <div class="microscope-arm"></div>
+
+        <div class="microscope-lens"></div>
+
+        <div class="microscope-stage"></div>
+
+    </div>
+
+
+    <!-- =================================================
+         LAB NOTEBOOK
+    ================================================== -->
+
+    <div class="notebook">
+
+        <div class="notebook-title">
+            KMT LAB NOTES
+        </div>
+
+        <div class="notebook-line">
+            Temperature ↑
+        </div>
+
+        <div class="notebook-line">
+            Particle Speed ↑
+        </div>
+
+        <div class="notebook-line">
+            Kinetic Energy ↑
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="lab-logo">
+
+        <div class="logo-symbol">
+            ⚗
+        </div>
+
+        <div>
+
+            <h1>KMT LAB</h1>
+
+            <p>
+                KINETIC MOLECULAR THEORY
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="lab-status">
+
+        <span class="status-light"></span>
+
+        LAB SIMULATION ACTIVE
+
+    </div>
+
+</header>
+
+
+<main class="laboratory">
+
+
+    
 
     font-size:15px;
     font-weight:900;
