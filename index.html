@@ -10,6 +10,9 @@
 <style>
 
 
+
+
+
 /* =========================================================
    GLOBAL
 ========================================================= */
@@ -24,8 +27,9 @@
 
 html,body{
     width:100%;
-    height:100%;
-    overflow:hidden;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
     font-family:Arial,Helvetica,sans-serif;
     background:#06101d;
     color:#eef8ff;
@@ -45,7 +49,7 @@ html,body{
     z-index:20;
 
 
-    display:flex;
+    display:none;
     justify-content:center;
     align-items:center;
 
@@ -117,7 +121,7 @@ html,body{
 
 
 /* =========================================================
-   ENTER LAB BUTTON
+   ENTER BUTTON
 ========================================================= */
 
 
@@ -128,30 +132,15 @@ html,body{
     border-radius:50px;
 
 
-    <span>
-                ENTER LAB
-            </span>
-
-            <strong>→</strong>
-
-        </button>
-
-    </div>
+    background:
+        linear-gradient(
+            135deg,
+            #36c9ff,
+            #197cff
+        );
 
 
-    <div class="welcome-footer">
-
-        <span>
-            INTERACTIVE LEARNING ENVIRONMENT
-        </span>
-
-        <span>
-            KMT • PARTICLE MOTION • MATTER
-        </span>
-
-    </div>
-
-</div>
+    color:white;
 
 
     font-size:15px;
@@ -187,6 +176,85 @@ html,body{
 
 
 
+
+
+/* =========================================================
+   ENHANCED WELCOME SCREEN
+========================================================= */
+.welcome-screen{
+    position:fixed;
+    inset:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(39,157,221,.22),transparent 32%),
+        radial-gradient(circle at 18% 22%,rgba(67,192,235,.10),transparent 26%),
+        linear-gradient(135deg,#03101d,#08253a 52%,#03101a);
+}
+.welcome-screen::before{
+    content:"";position:absolute;inset:0;opacity:.18;pointer-events:none;
+    background-image:linear-gradient(rgba(130,215,245,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(130,215,245,.10) 1px,transparent 1px);
+    background-size:54px 54px;
+}
+.welcome-glow{position:absolute;width:58vw;height:58vw;border-radius:50%;background:radial-gradient(circle,rgba(64,199,255,.16),transparent 68%);filter:blur(8px);}
+.welcome-content{position:relative;z-index:3;text-align:center;padding:28px;max-width:900px;}
+.welcome-subtitle{font-size:14px;font-weight:900;letter-spacing:5px;color:#72dcff;margin-bottom:18px;}
+.welcome-title{font-size:clamp(52px,7vw,94px);line-height:.95;font-weight:900;letter-spacing:2px;color:#f5fcff;text-shadow:0 0 18px rgba(70,205,255,.30),0 0 48px rgba(35,160,230,.18);}
+.welcome-divider{display:flex;align-items:center;justify-content:center;gap:18px;margin:20px auto 16px;color:#82e5ff;font-size:24px;}
+.welcome-divider span{display:block;width:min(180px,20vw);height:1px;background:linear-gradient(90deg,transparent,rgba(120,220,250,.65));}
+.welcome-divider span:last-child{transform:rotate(180deg);}
+.welcome-lab-name{font-size:clamp(20px,2.4vw,31px);font-weight:900;letter-spacing:3px;color:#a9edff;}
+.welcome-developer{margin-top:13px;font-size:15px;font-weight:800;letter-spacing:1px;color:#bfd2de;}
+.enter-lab-btn{margin-top:38px;display:inline-flex;align-items:center;gap:28px;padding:15px 24px 15px 30px;border:1px solid rgba(155,238,255,.35);border-radius:50px;background:linear-gradient(135deg,#36c9ff,#197cff);color:white;font-size:14px;font-weight:900;letter-spacing:3px;cursor:pointer;box-shadow:0 0 22px rgba(45,180,255,.34),inset 0 1px rgba(255,255,255,.35);transition:.25s ease;}
+.enter-lab-btn strong{font-size:23px;line-height:1;font-weight:500;transition:transform .25s ease;}
+.enter-lab-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 34px rgba(45,190,255,.55),inset 0 1px rgba(255,255,255,.45);}
+.enter-lab-btn:hover strong{transform:translateX(5px);}
+.enter-lab-btn:active{transform:scale(.97);}
+.welcome-footer{position:absolute;z-index:3;left:30px;right:30px;bottom:22px;display:flex;justify-content:space-between;gap:20px;color:#6e9aab;font-size:9px;font-weight:900;letter-spacing:1.7px;}
+.lab-beaker,.lab-flask{position:absolute;z-index:1;opacity:.20;border:2px solid rgba(125,224,255,.65);filter:drop-shadow(0 0 15px rgba(70,200,255,.25));}
+.lab-beaker{left:8%;bottom:12%;width:88px;height:130px;border-radius:8px 8px 22px 22px;border-top:none;}
+.lab-beaker::before{content:"";position:absolute;left:27px;top:-34px;width:30px;height:36px;border:2px solid rgba(125,224,255,.65);border-bottom:none;border-radius:6px 6px 0 0;}
+.lab-beaker::after{content:"";position:absolute;left:8px;right:8px;bottom:22px;height:36px;border-radius:50%;background:rgba(54,201,255,.16);border-top:2px solid rgba(125,224,255,.5);}
+.lab-flask{right:9%;top:18%;width:100px;height:115px;border-radius:50% 50% 30% 30%;clip-path:polygon(38% 0,62% 0,62% 34%,93% 84%,85% 100%,15% 100%,7% 84%,38% 34%);background:rgba(55,190,240,.06);}
+.welcome-particle{position:absolute;width:7px;height:7px;border-radius:50%;background:#80e8ff;box-shadow:0 0 12px rgba(100,225,255,.85);opacity:.7;animation:floatParticle 5s ease-in-out infinite;}
+.wp1{left:16%;top:30%;animation-delay:.2s}.wp2{left:24%;top:72%;animation-delay:1.1s}.wp3{right:18%;top:33%;animation-delay:2s}.wp4{right:27%;bottom:20%;animation-delay:3s}.wp5{left:42%;top:18%;animation-delay:1.7s}
+@keyframes floatParticle{0%,100%{transform:translate(0,0);opacity:.35}50%{transform:translate(12px,-18px);opacity:.9}}
+
+/* =========================================================
+   LAB ROOM DECORATIVE BACKGROUND
+========================================================= */
+.lab-room{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#0a2536 0 54%,#07151e 54% 100%);}
+.lab-room::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 36%,rgba(69,191,236,.14),transparent 35%),linear-gradient(90deg,rgba(2,9,15,.45),transparent 22%,transparent 78%,rgba(2,9,15,.45));}
+.ceiling-lights{position:absolute;top:10px;left:10%;right:10%;height:34px;display:flex;justify-content:space-between;}
+.ceiling-lights span{width:19%;height:8px;border-radius:10px;background:rgba(190,240,255,.48);box-shadow:0 0 24px rgba(130,220,255,.28);}
+.wall-panel{position:absolute;top:70px;bottom:45%;width:13%;border:1px solid rgba(105,192,220,.10);background:rgba(110,180,205,.025);}
+.wall-left{left:2%}.wall-right{right:2%}
+.lab-shelf{position:absolute;top:25%;width:170px;height:160px;border-top:4px solid rgba(128,183,201,.28);border-bottom:4px solid rgba(128,183,201,.22);background:rgba(5,19,29,.22);}
+.lab-shelf.left{left:2%}.lab-shelf.right{right:2%}
+.lab-shelf::before,.lab-shelf::after{content:"";position:absolute;left:0;right:0;height:2px;background:rgba(128,183,201,.22);}.lab-shelf::before{top:52px}.lab-shelf::after{top:105px}
+.shelf-bottle{position:absolute;bottom:13px;width:20px;height:40px;border:2px solid rgba(119,211,238,.28);border-radius:5px 5px 8px 8px;}.shelf-bottle::before{content:"";position:absolute;left:5px;top:-10px;width:6px;height:10px;border:2px solid rgba(119,211,238,.28);border-bottom:none;}
+.b1{left:22px}.b2{left:62px;height:30px}.b3{left:104px;height:48px}.b4{right:22px;height:35px}
+.safety-poster{position:absolute;left:4%;top:15%;width:145px;padding:12px;border:5px solid #684a2e;border-radius:5px;background:#f0d98e;color:#4b3b24;box-shadow:0 10px 20px rgba(0,0,0,.25);transform:rotate(-1deg);}
+.safety-poster .poster-title{font-size:11px;font-weight:900;letter-spacing:1px;margin-bottom:8px}.safety-poster p{font-size:8px;font-weight:800;line-height:1.45;margin:3px 0;}
+.kmt-board{position:absolute;right:4%;top:14%;width:190px;height:145px;padding:15px;border:8px solid #5a3e2a;border-radius:4px;background:#102b2a;color:#cbeed8;box-shadow:0 12px 25px rgba(0,0,0,.30);}
+.kmt-board h3{font-size:12px;letter-spacing:1px;margin-bottom:9px}.kmt-board p{font-size:9px;line-height:1.55;opacity:.9;}
+.test-tube-rack{position:absolute;left:20%;top:26%;width:105px;height:55px;border:3px solid rgba(151,191,201,.18);border-radius:8px;transform:skewX(-7deg);}
+.test-tube-rack span{position:absolute;bottom:4px;width:10px;height:42px;border:2px solid rgba(124,207,232,.22);border-top:none;border-radius:0 0 8px 8px;}
+.test-tube-rack span:nth-child(1){left:15px}.test-tube-rack span:nth-child(2){left:38px}.test-tube-rack span:nth-child(3){left:61px}.test-tube-rack span:nth-child(4){left:84px}
+.room-glassware{position:absolute;right:22%;top:26%;width:75px;height:90px;opacity:.20;border:3px solid rgba(122,215,240,.55);border-radius:50% 50% 35% 35%;clip-path:polygon(35% 0,65% 0,65% 36%,91% 86%,82% 100%,18% 100%,9% 86%,35% 36%);}
+.lab-table{position:absolute;left:7%;right:7%;bottom:4%;height:19%;border-radius:20px 20px 8px 8px;background:linear-gradient(180deg,#795334,#56391f);box-shadow:0 -10px 35px rgba(0,0,0,.22),inset 0 4px rgba(210,158,102,.16);}
+.lab-table::before{content:"";position:absolute;left:0;right:0;top:9px;height:4px;background:rgba(245,201,145,.14);}.lab-table::after{content:"";position:absolute;left:9%;right:9%;bottom:-28px;height:35px;background:linear-gradient(90deg,#4b301d 0 7%,transparent 7% 93%,#4b301d 93%);}
+.microscope{position:absolute;left:18%;bottom:18%;width:92px;height:72px;opacity:.24;border:4px solid rgba(170,212,222,.5);border-radius:50%;transform:rotate(-8deg);}.microscope::before{content:"";position:absolute;width:35px;height:58px;left:34px;top:-45px;border-left:7px solid rgba(170,212,222,.5);border-radius:50%;transform:rotate(28deg);}.microscope::after{content:"";position:absolute;width:55px;height:8px;left:16px;bottom:-8px;border-radius:8px;background:rgba(170,212,222,.5);}
+.lab-notebook{position:absolute;right:19%;bottom:16%;width:105px;height:65px;transform:rotate(-5deg);background:rgba(215,228,230,.20);border:2px solid rgba(200,225,232,.28);box-shadow:0 8px 15px rgba(0,0,0,.2);}
+.lab-notebook::after{content:"KMT";position:absolute;inset:20px 0;text-align:center;font-weight:900;letter-spacing:3px;color:rgba(220,245,250,.55);}
+
+/* Background must stay behind the interactive controls and canvas. */
+.lab-room + .lab-header{z-index:5;}
+#lab > .lab-room{z-index:0;}
+#lab > .lab-header,#lab > .control-panel,#lab > .temp-panel,#lab > .average-ke-display,#lab > .sim-card,#lab > .temp-status,#lab > .simulation-next-btn{z-index:5;}
 
 /* =========================================================
    CIRCULAR TRANSITION
@@ -256,11 +324,12 @@ html,body{
 
 #lab{
     position:relative;
-    z-index:1;
+    z-index:10;
 
 
     width:100%;
-    height:100%;
+    height:100vh;
+    min-height:100vh;
 
 
     display:none;
@@ -486,6 +555,101 @@ html,body{
 
 
 
+
+
+.particle-info{margin-top:16px;display:flex;flex-direction:column;gap:7px;width:100%;box-sizing:border-box;}
+.particle-info-box{padding:9px 11px;border-radius:11px;background:linear-gradient(135deg,rgba(40,130,175,.16),rgba(255,255,255,.035));border:1px solid rgba(120,210,245,.13);box-shadow:inset 0 1px rgba(255,255,255,.04);}
+.info-label{font-size:8px;font-weight:900;letter-spacing:1.5px;color:#82b9cd;margin-bottom:3px;}
+.info-value{font-size:16px;font-weight:900;color:#e9fbff;letter-spacing:.5px;}
+.particle-motion-scale{display:flex;flex-direction:column;gap:4px;padding:2px 3px;color:#91b3c2;font-size:8px;font-weight:800;line-height:1.25;}
+.particle-motion-scale b{color:#dff8ff;letter-spacing:.5px;}
+.control-panel{padding-bottom:16px;box-sizing:border-box;}
+
+
+/* LARGER GAS PARTICLES INFO PANEL */
+.control-panel{
+    width:285px !important;
+    min-height:390px;
+    padding:24px !important;
+    border:2px solid #fff !important;
+    background:linear-gradient(145deg,rgba(7,30,47,.94),rgba(9,43,57,.90)) !important;
+    box-shadow:0 18px 38px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.12);
+}
+.particle-info{
+    margin-top:20px !important;
+    gap:12px !important;
+}
+.particle-info-box{
+    min-height:72px;
+    padding:15px 16px !important;
+    border:2px solid rgba(255,255,255,.75) !important;
+    border-radius:14px !important;
+    background:linear-gradient(135deg,rgba(24,116,154,.34),rgba(9,49,66,.78)) !important;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.info-label{font-size:10px !important;letter-spacing:2px !important;color:#dff8ff !important;margin-bottom:7px !important;}
+.info-value{font-size:25px !important;line-height:1.05;color:#fff !important;letter-spacing:1px !important;}
+
+/* COLORFUL LAB CLIPART / ILLUSTRATIONS */
+.lab-shelf{
+    opacity:1 !important;
+    border:5px solid #6d4529 !important;
+    border-top-width:7px !important;
+    border-bottom-width:7px !important;
+    background:linear-gradient(180deg,#b47b43,#704523) !important;
+    box-shadow:0 12px 24px rgba(0,0,0,.35);
+}
+.lab-shelf::before,.lab-shelf::after{background:#4e301d !important;height:5px !important;}
+.shelf-bottle{
+    border:3px solid #f8ffff !important;
+    box-shadow:0 4px 8px rgba(0,0,0,.28),inset 0 5px rgba(255,255,255,.22);
+}
+.shelf-bottle::before{border-color:#f8ffff !important;background:#ddd;}
+.b1{background:linear-gradient(180deg,#65e58b,#159447) !important;}
+.b2{background:linear-gradient(180deg,#ffe66b,#e7a91b) !important;}
+.b3{background:linear-gradient(180deg,#69d8ff,#187ac5) !important;}
+.b4{background:linear-gradient(180deg,#ff8b76,#d23b3b) !important;}
+.safety-poster{
+    opacity:1 !important;
+    width:155px !important;
+    background:linear-gradient(180deg,#fff4b5,#f0cf63) !important;
+    border:6px solid #704b2e !important;
+    box-shadow:0 10px 20px rgba(0,0,0,.38);
+}
+.test-tube-rack{
+    opacity:1 !important;
+    border:5px solid #6b4025 !important;
+    background:#b97b40 !important;
+    box-shadow:0 10px 18px rgba(0,0,0,.3);
+}
+.test-tube-rack span{border:3px solid #fff !important;border-top:none !important;}
+.test-tube-rack span:nth-child(1){background:#55d98a !important;}
+.test-tube-rack span:nth-child(2){background:#ffe35c !important;}
+.test-tube-rack span:nth-child(3){background:#62c9ff !important;}
+.test-tube-rack span:nth-child(4){background:#ff7373 !important;}
+.room-glassware{
+    opacity:1 !important;
+    border:5px solid #72e6ff !important;
+    background:linear-gradient(180deg,rgba(72,217,255,.28),rgba(35,160,100,.72));
+    box-shadow:0 0 18px rgba(80,220,255,.2);
+}
+.microscope{
+    opacity:1 !important;
+    border-color:#d6a34a !important;
+    background:linear-gradient(145deg,#324b5b,#162731);
+    box-shadow:0 10px 18px rgba(0,0,0,.35);
+}
+.microscope::before{border-left-color:#d6a34a !important;}
+.microscope::after{background:#d6a34a !important;}
+.lab-notebook{
+    opacity:1 !important;
+    background:linear-gradient(135deg,#f7df72,#d5a83c) !important;
+    border:3px solid #7a542b !important;
+}
+.lab-notebook::after{color:#5d3d20 !important;}
+.kmt-board{opacity:1 !important;box-shadow:0 12px 25px rgba(0,0,0,.38);}
 
 /* =========================================================
    TEMPERATURE PANEL
@@ -970,11 +1134,11 @@ html,body{
 
 
     width:
-        min(800px,58vw);
+        min(900px,68vw);
 
 
     height:
-        min(630px,70vh);
+        min(660px,74vh);
 
 
     min-width:500px;
@@ -1602,6 +1766,399 @@ html,body{
     .reveal-box{min-width:65px;height:42px}.reveal-control{height:42px}.reveal-buttons button{width:27px;height:21px}
 }
 
+
+@media(max-width:900px){
+    .lab-shelf,.kmt-board,.safety-poster,.test-tube-rack,.room-glassware{opacity:1 !important;transform:scale(.82);transform-origin:top left;}
+    .lab-shelf.right,.kmt-board{transform-origin:top right;}
+    .control-panel{width:255px !important;min-height:360px;}
+}
+@media(max-width:700px){
+    .welcome-footer span:last-child{display:none;}
+    .welcome-footer{justify-content:center;}
+    .lab-shelf,.safety-poster,.test-tube-rack,.room-glassware,.microscope,.lab-notebook{opacity:1 !important;}
+}
+
+
+/* FINAL VISUAL POLISH */
+.sim-card{
+    width:min(900px,66vw);
+    height:min(650px,72vh);
+    min-width:560px;
+    min-height:460px;
+    border:0 !important;
+    background:transparent;
+    box-shadow:none;
+    overflow:visible;
+}
+.control-panel, .temp-panel{
+    border-color:rgba(255,255,255,.9) !important;
+}
+.count-btn, .enter-lab-btn, button, .simulation-next-btn{
+    border:1.5px solid #fff !important;
+}
+.particle-info{margin-top:12px;}
+.particle-info-box{border-color:rgba(255,255,255,.28);}
+.particle-motion-scale{display:none !important;}
+.lab-room{
+    opacity:1 !important;
+    background:linear-gradient(180deg,#0b2a3d 0 54%,#111b20 54% 100%);
+}
+.lab-room::before{opacity:1 !important;}
+.safety-poster{opacity:.95 !important;}
+.lab-shelf{opacity:.9 !important;}
+.shelf-bottle{
+    opacity:1 !important;
+    border-color:rgba(255,255,255,.42) !important;
+}
+.b1{background:rgba(55,190,120,.55);}
+.b2{background:rgba(245,205,70,.58);}
+.b3{background:rgba(70,175,225,.55);}
+.b4{background:rgba(225,95,80,.52);}
+.lab-notebook{opacity:.72 !important;}
+@media(max-width:1050px){.sim-card{width:62vw;}}
+@media(max-width:800px){.sim-card{width:70vw;min-width:400px;height:60vh;}}
+
+
+/* Final visual refinements */
+.particle-info { width: 100%; max-width: 320px; margin-top: 14px; }
+.particle-info-box { min-height: 76px; padding: 12px 16px; }
+.particle-info .info-label { font-size: 13px; letter-spacing: 1.4px; }
+.particle-info .info-value { font-size: 25px; font-weight: 800; }
+.lab-status-box { margin-top: 12px; margin-left:-14px; width:calc(100% + 28px); box-sizing:border-box; padding: 11px 14px; border: 2px solid #fff; border-radius: 12px; background: rgba(8,20,38,.78); color: #fff; text-align: center; font-size: 14px; letter-spacing: 1px; box-shadow: 0 4px 14px rgba(0,0,0,.22); }
+.lab-status-box strong { font-size: 15px; }
+.lab-status-dot { display:inline-block; width:9px; height:9px; border-radius:50%; background:#53e07a; margin-right:7px; box-shadow:0 0 10px rgba(83,224,122,.8); }
+.sim-card { border: none !important; box-shadow: none !important; background: transparent !important; }
+#simulationCanvas { border: none !important; border-radius: 0 !important; box-shadow: none !important; }
+
+/* =========================================================
+   AVERAGE KINETIC ENERGY - MATCH CONTROL FRAMES
+========================================================= */
+.average-ke-display{
+    border:2px solid #fff !important;
+    border-radius:14px !important;
+    background:rgba(8,20,38,.82) !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.28), 0 0 14px rgba(255,255,255,.06) !important;
+}
+
+/* =========================================================
+   POST-SIMULATION ACTIVITY - ENGAGING REDESIGN
+========================================================= */
+#activityTrack, #activityDiscover{
+    position:fixed;
+    inset:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(53,188,255,.16), transparent 28%),
+      radial-gradient(circle at 85% 75%, rgba(104,225,178,.10), transparent 25%),
+      linear-gradient(145deg,#061626 0%,#0a2235 48%,#071522 100%);
+}
+#activityTrack::before, #activityDiscover::before{
+    content:"";
+    position:absolute; inset:20px;
+    border:1px solid rgba(117,220,255,.08);
+    border-radius:32px; pointer-events:none;
+}
+.activity-shell{
+    position:relative; z-index:1;
+    padding:42px 0 90px;
+}
+.activity-kicker{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:8px 16px; border:1px solid rgba(110,220,255,.38);
+    border-radius:999px; background:rgba(22,94,128,.30);
+    box-shadow:0 0 20px rgba(40,190,255,.10);
+}
+.activity-kicker::before{content:"✦"; color:#7de6ff; font-size:16px;}
+.activity-title{
+    margin:4px 0 18px;
+    font-size:clamp(34px,5vw,58px);
+    text-shadow:0 5px 28px rgba(0,0,0,.35),0 0 24px rgba(65,202,255,.16);
+}
+.activity-directions{
+    position:relative; width:min(920px,100%);
+    padding:19px 25px; margin:10px auto 28px;
+    border:1px solid rgba(124,222,255,.30);
+    border-left:5px solid #51d5ff;
+    border-radius:18px;
+    background:linear-gradient(135deg,rgba(14,64,91,.78),rgba(7,28,45,.88));
+    box-shadow:0 14px 35px rgba(0,0,0,.25);
+    font-size:16px;
+}
+.track-table-wrap,.card-pool,.discover-panel{
+    border:1px solid rgba(128,224,255,.28);
+    background:linear-gradient(145deg,rgba(8,35,53,.91),rgba(3,18,31,.94));
+    box-shadow:0 22px 55px rgba(0,0,0,.30), inset 0 1px rgba(255,255,255,.06);
+}
+.track-table-wrap{padding:22px;}
+.track-table{border-spacing:10px;}
+.track-table th{
+    padding:17px 10px;
+    background:linear-gradient(135deg,rgba(30,112,150,.78),rgba(13,65,96,.78));
+    border:1px solid rgba(133,229,255,.38);
+    color:#e7fbff;
+    box-shadow:inset 0 1px rgba(255,255,255,.10);
+}
+.track-table td{
+    height:98px;
+    border:2px dashed rgba(113,215,245,.25);
+    background:rgba(8,30,46,.70);
+}
+.temperature-cell{
+    color:#8fe9ff;
+    background:linear-gradient(135deg,rgba(22,91,123,.32),rgba(7,28,43,.70)) !important;
+}
+.drop-zone.drag-over{
+    border-color:#64e3a5 !important;
+    background:rgba(40,178,126,.13) !important;
+    box-shadow:0 0 22px rgba(54,220,153,.13);
+}
+.card-pool{padding:20px;}
+.pool-label{
+    color:#8eeaff;
+    font-size:12px; letter-spacing:1.7px;
+    margin-bottom:13px;
+}
+.drag-pool{gap:11px;}
+.drag-card{
+    border:1px solid rgba(143,230,255,.38);
+    background:linear-gradient(135deg,#176987,#0d3e5d);
+    box-shadow:0 9px 22px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.13);
+}
+.drag-card:hover{
+    transform:translateY(-3px) scale(1.015);
+    box-shadow:0 13px 27px rgba(0,0,0,.28),0 0 18px rgba(59,207,255,.18);
+}
+.placed-card{
+    border:1px solid rgba(108,224,255,.32);
+    background:linear-gradient(135deg,rgba(22,99,130,.72),rgba(8,47,70,.88));
+}
+.activity-feedback{
+    min-height:26px; margin-top:18px;
+    font-weight:800; letter-spacing:.3px;
+}
+.activity-actions{margin-top:20px; gap:12px;}
+.activity-btn{
+    border:1px solid rgba(255,255,255,.75);
+    border-radius:999px; padding:14px 28px;
+    background:linear-gradient(135deg,#35caff,#1675e8);
+    box-shadow:0 10px 25px rgba(0,0,0,.25),0 0 18px rgba(45,180,255,.20),inset 0 1px rgba(255,255,255,.35);
+}
+.activity-btn:hover:not(:disabled){
+    transform:translateY(-3px);
+    box-shadow:0 13px 30px rgba(0,0,0,.28),0 0 28px rgba(45,190,255,.38);
+}
+#activityDiscover .activity-shell{padding-top:48px;}
+.discover-panel{
+    width:min(1000px,100%); padding:30px; margin-top:12px;
+}
+.discover-prompt{
+    padding:15px 18px; margin-bottom:20px;
+    border-radius:14px;
+    background:rgba(16,76,101,.28);
+    border:1px solid rgba(103,216,247,.20);
+}
+.statement-list{gap:15px;}
+.discovery-statement{
+    padding:24px 22px;
+    border:1px solid rgba(113,219,248,.25);
+    background:linear-gradient(135deg,rgba(12,48,68,.82),rgba(5,25,40,.92));
+    box-shadow:0 12px 28px rgba(0,0,0,.20);
+}
+.reveal-box{
+    border:2px dashed rgba(119,226,255,.52);
+    background:linear-gradient(135deg,rgba(18,78,104,.55),rgba(4,25,40,.85));
+}
+.reveal-box.revealed{
+    border-style:solid; border-color:#61e2a4;
+    color:#9ff8c9; background:rgba(32,150,103,.18);
+    box-shadow:0 0 18px rgba(55,220,151,.18);
+}
+.relationship-box{
+    border:1px solid rgba(94,229,173,.38);
+    background:linear-gradient(135deg,rgba(22,113,91,.28),rgba(9,54,57,.34));
+    box-shadow:0 16px 35px rgba(0,0,0,.22),0 0 24px rgba(58,220,163,.08);
+}
+.relationship-label{color:#79efb5;}
+.relationship-main{color:#f3fffa;}
+.takeaway{color:#d8f5e8;}
+@media(max-width:600px){
+    .activity-shell{padding-top:28px;}
+    .track-table-wrap,.card-pool,.discover-panel{border-radius:18px;}
+    .activity-directions{padding:15px 17px;}
+}
+
+
+/* PARTICLE-MOTION BACKGROUND + LARGER ACTIVITY TEXT */
+#activityTrack, #activityDiscover{
+    isolation:isolate;
+}
+.activity-particle-field{
+    position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0;
+}
+.activity-particle{
+    position:absolute; width:7px; height:7px; border-radius:50%;
+    background:rgba(116,224,255,.72);
+    box-shadow:0 0 10px rgba(72,203,255,.45);
+    animation:activityParticleDrift linear infinite;
+}
+.activity-particle:nth-child(3n){width:5px;height:5px;opacity:.65;}
+.activity-particle:nth-child(4n){width:9px;height:9px;opacity:.42;}
+.activity-particle:nth-child(5n){background:rgba(120,242,190,.72);}
+@keyframes activityParticleDrift{
+    0%{transform:translate3d(0,110vh,0) scale(.75);opacity:0;}
+    10%{opacity:.7;}
+    50%{transform:translate3d(70px,45vh,0) scale(1);}
+    90%{opacity:.55;}
+    100%{transform:translate3d(-55px,-12vh,0) scale(.8);opacity:0;}
+}
+.activity-shell{z-index:2;}
+.activity-kicker,
+.activity-directions,
+.track-table-wrap,
+.card-pool,
+.discover-panel,
+.discovery-statement,
+.relationship-box,
+.placed-card,
+.drag-card,
+.reveal-box,
+.temperature-cell{
+    border-width:2px !important;
+}
+.activity-kicker{font-size:17px !important;}
+.activity-title{font-size:clamp(40px,5.3vw,64px) !important;}
+.activity-directions{font-size:19px !important; line-height:1.65 !important;}
+.track-table th{font-size:15px !important; padding:18px 12px !important;}
+.track-table td{font-size:18px !important;}
+.temperature-cell{font-size:30px !important;}
+.drop-placeholder{font-size:18px !important;}
+.drag-card{font-size:20px !important; padding:18px 12px !important;}
+.placed-card{font-size:19px !important; min-height:58px !important;}
+.pool-label{font-size:15px !important;}
+.activity-feedback{font-size:19px !important;}
+.activity-btn{font-size:18px !important; padding:15px 30px !important;}
+.discover-prompt{font-size:21px !important; line-height:1.7 !important;}
+.discovery-statement{font-size:23px !important; line-height:1.8 !important;}
+.reveal-box{font-size:34px !important;}
+.relationship-label{font-size:14px !important;}
+.relationship-main{font-size:clamp(20px,2.5vw,29px) !important; line-height:1.5 !important;}
+.takeaway{font-size:19px !important;}
+@media(max-width:600px){
+    .activity-title{font-size:36px !important;}
+    .activity-directions{font-size:17px !important;}
+    .discovery-statement{font-size:19px !important;}
+}
+
+/* EXTRA ACTIVITY EMPHASIS */
+#activityTrack, #activityDiscover{
+    font-weight:800;
+}
+#activityTrack .activity-shell, #activityDiscover .activity-shell{
+    font-weight:800;
+}
+#activityTrack .activity-kicker, #activityDiscover .activity-kicker{
+    border-width:3px !important;
+    font-weight:900 !important;
+    font-size:19px !important;
+    padding:10px 18px !important;
+}
+#activityTrack .activity-title, #activityDiscover .activity-title{
+    font-weight:900 !important;
+}
+#activityTrack .activity-directions, #activityDiscover .discover-prompt{
+    border-width:3px !important;
+    font-weight:800 !important;
+    font-size:21px !important;
+}
+#activityTrack .track-table-wrap, #activityTrack .card-pool, #activityDiscover .discover-panel{
+    border-width:3px !important;
+}
+/* Keep the left Track the Change box fitted to the table instead of stretching with the card pool. */
+#activityTrack .track-layout{
+    align-items:start !important;
+}
+#activityTrack .track-table-wrap{
+    height:max-content !important;
+    align-self:start !important;
+}
+#activityTrack .track-table th, #activityTrack .track-table td{
+    border-width:3px !important;
+    font-weight:900 !important;
+}
+#activityTrack .temperature-cell{font-size:32px !important;}
+#activityTrack .drop-placeholder{font-size:20px !important; font-weight:900 !important;}
+#activityTrack .drag-card, #activityTrack .placed-card{
+    border-width:3px !important;
+    font-size:22px !important;
+    font-weight:900 !important;
+}
+#activityTrack .pool-label{font-size:17px !important; font-weight:900 !important;}
+#activityTrack .activity-feedback, #activityDiscover .activity-feedback{
+    font-size:21px !important; font-weight:900 !important;
+}
+#activityTrack .activity-btn, #activityDiscover .activity-btn{
+    border-width:3px !important;
+    font-size:20px !important;
+    font-weight:900 !important;
+}
+#activityDiscover .discover-panel{padding:32px !important;}
+#activityDiscover .discovery-statement{
+    border-width:3px !important;
+    font-size:25px !important;
+    font-weight:900 !important;
+    line-height:1.75 !important;
+}
+#activityDiscover .reveal-box{
+    border-width:3px !important;
+    font-size:38px !important;
+    font-weight:900 !important;
+}
+#activityDiscover .relationship-box{
+    border-width:3px !important;
+}
+#activityDiscover .relationship-label{font-size:16px !important; font-weight:900 !important;}
+#activityDiscover .relationship-main{font-size:clamp(22px,2.7vw,32px) !important; font-weight:900 !important;}
+#activityDiscover .takeaway{font-size:21px !important; font-weight:900 !important;}
+@media(max-width:600px){
+    #activityTrack .activity-directions, #activityDiscover .discover-prompt{font-size:18px !important;}
+    #activityTrack .drag-card, #activityTrack .placed-card{font-size:19px !important;}
+    #activityDiscover .discovery-statement{font-size:20px !important;}
+}
+
+/* FINAL PANEL ALIGNMENT */
+.temp-panel{right:24px !important; top:92px !important; width:190px !important; height:430px !important; min-height:430px !important;}
+.average-ke-display{right:24px !important; top:522px !important; width:190px !important; min-height:108px !important; margin:0 !important; border-radius:0 0 18px 18px !important; border:2px solid #fff !important; border-top:0 !important;}
+
+/* CELEBRATION FEEDBACK */
+#activityTrack .activity-feedback.feedback-success, #activityDiscover .activity-feedback.feedback-success{
+    font-size:32px !important;
+    font-weight:1000 !important;
+    letter-spacing:1px !important;
+    line-height:1.25 !important;
+    padding:18px 24px !important;
+    border:4px solid rgba(255,255,255,.95) !important;
+    border-radius:16px !important;
+    text-align:center !important;
+    box-shadow:0 0 24px rgba(255,255,255,.22), 0 10px 30px rgba(0,0,0,.25) !important;
+}
+@media(max-width:600px){
+    #activityTrack .activity-feedback.feedback-success, #activityDiscover .activity-feedback.feedback-success{font-size:25px !important;}
+}
+.confetti-piece{
+    position:fixed;
+    top:-18px;
+    width:10px;
+    height:18px;
+    z-index:99999;
+    pointer-events:none;
+    border-radius:2px;
+    animation:confettiFall 1.7s cubic-bezier(.18,.7,.25,1) forwards;
+}
+@keyframes confettiFall{
+    0%{transform:translate3d(0,-20px,0) rotate(0deg);opacity:1;}
+    100%{transform:translate3d(var(--drift),110vh,0) rotate(var(--spin));opacity:0;}
+}
 </style>
 </head>
 
@@ -1618,43 +2175,31 @@ html,body{
 ========================================================= -->
 
 
-<section id="intro">
+<section id="welcomeScreen" class="welcome-screen">
+    <div class="welcome-glow"></div>
+    <div class="lab-beaker" aria-hidden="true"></div>
+    <div class="lab-flask" aria-hidden="true"></div>
+    <div class="welcome-particle wp1"></div>
+    <div class="welcome-particle wp2"></div>
+    <div class="welcome-particle wp3"></div>
+    <div class="welcome-particle wp4"></div>
+    <div class="welcome-particle wp5"></div>
 
-
-    <div class="intro-content">
-
-
-        <div class="intro-kicker">
-            KINETIC MOLECULAR THEORY
-        </div>
-
-
-        <h1 class="intro-title">
-            Particles in Motion
-        </h1>
-
-
-        <div class="intro-subtitle">
-            The KMT Interactive Lab
-        </div>
-
-
-        <div class="intro-developer">
-            Developed by BSEd Science 4A
-        </div>
-
-
-        <button
-            class="enter-btn"
-            onclick="enterLab()"
-        >
-            ENTER LAB
+    <div class="welcome-content">
+        <div class="welcome-subtitle">KINETIC MOLECULAR THEORY</div>
+        <h1 class="welcome-title">PARTICLES IN MOTION</h1>
+        <div class="welcome-divider"><span></span><b>⚗</b><span></span></div>
+        <h2 class="welcome-lab-name">THE KMT INTERACTIVE LAB</h2>
+        <p class="welcome-developer">Developed by BSEd Science 4A</p>
+        <button id="enterLabBtn" class="enter-lab-btn" onclick="enterLab()">
+            <span>ENTER LAB</span><strong>→</strong>
         </button>
-
-
     </div>
 
-
+    <div class="welcome-footer">
+        <span>INTERACTIVE LEARNING ENVIRONMENT</span>
+        <span>KMT • PARTICLE MOTION • MATTER</span>
+    </div>
 </section>
 
 
@@ -1672,6 +2217,25 @@ html,body{
 
 <section id="lab">
 
+    <div class="lab-room" aria-hidden="true">
+        <div class="ceiling-lights"><span></span><span></span><span></span><span></span></div>
+        <div class="wall-panel wall-left"></div><div class="wall-panel wall-right"></div>
+        <div class="lab-shelf left">
+            <span class="shelf-bottle b1"></span><span class="shelf-bottle b2"></span><span class="shelf-bottle b3"></span><span class="shelf-bottle b4"></span>
+        </div>
+        <div class="lab-shelf right">
+            <span class="shelf-bottle b1"></span><span class="shelf-bottle b2"></span><span class="shelf-bottle b3"></span><span class="shelf-bottle b4"></span>
+        </div>
+        <div class="safety-poster">
+            <div class="poster-title">LAB SAFETY</div>
+            <p>• Observe before concluding.</p><p>• Handle equipment carefully.</p><p>• Keep the workspace clear.</p>
+        </div>
+        <div class="test-tube-rack"><span></span><span></span><span></span><span></span></div>
+        <div class="kmt-board"><h3>KMT PRINCIPLES</h3><p>Particles are in constant random motion.</p><p>Temperature relates to average kinetic energy.</p><p>Collisions are elastic.</p></div>
+        <div class="room-glassware"></div>
+        <div class="lab-table"></div>
+        <div class="lab-notebook"></div>
+    </div>
 
 
 
@@ -1734,10 +2298,24 @@ html,body{
         </div>
 
 
+
+
+        <div class="particle-info">
+                <div class="particle-info-box">
+                    <div class="info-label">TEMPERATURE</div>
+                    <div id="gasParticleTemperature" class="info-value">300 K</div>
+                </div>
+                <div class="particle-info-box">
+                    <div class="info-label">PARTICLE MOTION</div>
+                    <div id="particleMotionStatus" class="info-value">MODERATE</div>
+                </div>
+            </div>
+
+            <div class="lab-status-box" aria-label="Lab Status">
+                <span class="lab-status-dot"></span><strong>LAB STATUS: ACTIVE</strong>
+            </div>
+
     </div>
-
-
-
 
     <!-- =====================================================
          TEMPERATURE
@@ -1887,6 +2465,7 @@ html,body{
      TRACK THE CHANGE ACTIVITY
 ========================================================= -->
 <section id="activityTrack">
+    <div class="activity-particle-field" aria-hidden="true"><span class="activity-particle" style="left:4%; animation-duration:15s; animation-delay:-3s;"></span><span class="activity-particle" style="left:11%; animation-duration:19s; animation-delay:-8s;"></span><span class="activity-particle" style="left:18%; animation-duration:14s; animation-delay:-1s;"></span><span class="activity-particle" style="left:25%; animation-duration:22s; animation-delay:-11s;"></span><span class="activity-particle" style="left:33%; animation-duration:17s; animation-delay:-6s;"></span><span class="activity-particle" style="left:41%; animation-duration:20s; animation-delay:-14s;"></span><span class="activity-particle" style="left:49%; animation-duration:16s; animation-delay:-4s;"></span><span class="activity-particle" style="left:57%; animation-duration:23s; animation-delay:-17s;"></span><span class="activity-particle" style="left:65%; animation-duration:18s; animation-delay:-9s;"></span><span class="activity-particle" style="left:73%; animation-duration:21s; animation-delay:-2s;"></span><span class="activity-particle" style="left:81%; animation-duration:15s; animation-delay:-12s;"></span><span class="activity-particle" style="left:89%; animation-duration:24s; animation-delay:-7s;"></span><span class="activity-particle" style="left:96%; animation-duration:18s; animation-delay:-15s;"></span><span class="activity-particle" style="left:8%; animation-duration:26s; animation-delay:-19s;"></span><span class="activity-particle" style="left:38%; animation-duration:25s; animation-delay:-20s;"></span><span class="activity-particle" style="left:68%; animation-duration:27s; animation-delay:-13s;"></span></div>
     <div class="activity-shell">
         <div class="activity-kicker">POST-SIMULATION ACTIVITY</div>
         <h1 class="activity-title">TRACK THE CHANGE</h1>
@@ -1921,6 +2500,7 @@ html,body{
      WHAT DID YOU DISCOVER ACTIVITY
 ========================================================= -->
 <section id="activityDiscover">
+    <div class="activity-particle-field" aria-hidden="true"><span class="activity-particle" style="left:5%; animation-duration:18s; animation-delay:-5s;"></span><span class="activity-particle" style="left:14%; animation-duration:23s; animation-delay:-13s;"></span><span class="activity-particle" style="left:22%; animation-duration:16s; animation-delay:-2s;"></span><span class="activity-particle" style="left:31%; animation-duration:21s; animation-delay:-10s;"></span><span class="activity-particle" style="left:40%; animation-duration:17s; animation-delay:-15s;"></span><span class="activity-particle" style="left:50%; animation-duration:25s; animation-delay:-7s;"></span><span class="activity-particle" style="left:59%; animation-duration:19s; animation-delay:-18s;"></span><span class="activity-particle" style="left:68%; animation-duration:22s; animation-delay:-4s;"></span><span class="activity-particle" style="left:77%; animation-duration:16s; animation-delay:-12s;"></span><span class="activity-particle" style="left:86%; animation-duration:24s; animation-delay:-8s;"></span><span class="activity-particle" style="left:94%; animation-duration:20s; animation-delay:-17s;"></span><span class="activity-particle" style="left:9%; animation-duration:27s; animation-delay:-20s;"></span><span class="activity-particle" style="left:35%; animation-duration:26s; animation-delay:-6s;"></span><span class="activity-particle" style="left:63%; animation-duration:28s; animation-delay:-14s;"></span><span class="activity-particle" style="left:82%; animation-duration:29s; animation-delay:-21s;"></span></div>
     <div class="activity-shell">
         <div class="activity-kicker">CONCEPT CHECK</div>
         <h1 class="activity-title">🔎 WHAT DID YOU DISCOVER?</h1>
@@ -2319,63 +2899,46 @@ function playParticleSound(
 
 
 function enterLab(){
+    try{ playEnterSound(); }catch(e){}
+    const intro = document.getElementById("intro") || document.getElementById("welcomeScreen");
+    const transition = document.getElementById("circleTransition");
+    const lab = document.getElementById("lab");
+    if(!lab) return;
 
+    // The lab is prepared first, but remains invisible until the circular wipe begins.
+    lab.style.display = "block";
+    lab.style.visibility = "hidden";
+    lab.style.opacity = "0";
+    lab.style.zIndex = "10";
 
-    playEnterSound();
+    if(transition){
+        transition.style.display = "block";
+        transition.classList.remove("expand");
+        void transition.offsetWidth;
+        transition.classList.add("expand");
+    }
 
+    // Reveal the KMT Lab while the circle is expanding.
+    setTimeout(()=>{
+        lab.style.visibility = "visible";
+        lab.style.opacity = "1";
+        requestAnimationFrame(()=>resizeCanvas());
+    }, 320);
 
-    const intro =
-        document.getElementById(
-            "intro"
-        );
+    setTimeout(()=>{
+        if(intro){
+            intro.style.display = "none";
+            intro.style.visibility = "hidden";
+        }
+    }, 650);
 
-
-    const transition =
-        document.getElementById(
-            "circleTransition"
-        );
-
-
-    const lab =
-        document.getElementById(
-            "lab"
-        );
-
-
-    lab.style.display =
-        "block";
-
-
-    transition.classList.add(
-        "expand"
-    );
-
-
-    setTimeout(
-        ()=>{
-            intro.style.display =
-                "none";
-        },
-        650
-    );
-
-
-    setTimeout(
-        ()=>{
-            transition.style.display =
-                "none";
-        },
-        1100
-    );
-
-
-    resizeCanvas();
-
-
+    setTimeout(()=>{
+        if(transition){
+            transition.classList.remove("expand");
+            transition.style.display = "none";
+        }
+    }, 1050);
 }
-
-
-
 
 /* =========================================================
    CANVAS
@@ -2613,7 +3176,7 @@ function temperatureSpeedFactor(){
 
         factor *=
             1+
-            highTemp*.65;
+            highTemp*1.20;
 
 
     }
@@ -2831,6 +3394,27 @@ function updateTemperatureUI(){
     sliderCenterValue.textContent =
         `${temperature} K`;
 
+    const gasParticleTemperature =
+        document.getElementById("gasParticleTemperature");
+    const particleMotionStatus =
+        document.getElementById("particleMotionStatus");
+
+    if(gasParticleTemperature){
+        gasParticleTemperature.textContent = `${temperature} K`;
+    }
+
+    if(particleMotionStatus){
+        if(temperature === 0){
+            particleMotionStatus.textContent = "STOPPED";
+        }else if(temperature <= 100){
+            particleMotionStatus.textContent = "SLOW";
+        }else if(temperature <= 300){
+            particleMotionStatus.textContent = "MODERATE";
+        }else{
+            particleMotionStatus.textContent = "FAST";
+        }
+    }
+
 
 
 
@@ -3039,20 +3623,20 @@ function updateChamber(){
 
 
     chamber.cy =
-        canvasHeight*.44;
+        canvasHeight*.49;
 
 
     chamber.rx =
         Math.min(
-            canvasWidth*.22,
-            175
+            canvasWidth*.29,
+            240
         );
 
 
     chamber.ry =
         Math.min(
-            canvasHeight*.30,
-            195
+            canvasHeight*.33,
+            215
         );
 
 
@@ -3069,7 +3653,7 @@ function updateChamber(){
 const particles=[];
 
 
-const MAX_PARTICLES=30;
+const MAX_PARTICLES=40;
 
 
 const PARTICLE_RADIUS=7;
@@ -4178,7 +4762,7 @@ function drawChamber(){
         "rgba(76,207,255,.75)";
 
 
-    ctx.lineWidth=2;
+    ctx.lineWidth=5;
 
 
     ctx.beginPath();
@@ -4244,7 +4828,7 @@ function drawChamber(){
         "rgba(92,218,255,.75)";
 
 
-    ctx.lineWidth=2;
+    ctx.lineWidth=5;
 
 
     ctx.stroke();
@@ -5876,6 +6460,24 @@ function openTrackChange(){
     resetTrackActivity();
 }
 
+
+function launchConfetti(){
+    const pieces=70;
+    for(let i=0;i<pieces;i++){
+        const piece=document.createElement('span');
+        piece.className='confetti-piece';
+        piece.style.left=(5+Math.random()*90)+'vw';
+        piece.style.width=(7+Math.random()*7)+'px';
+        piece.style.height=(10+Math.random()*12)+'px';
+        piece.style.background=['#55e58a','#5bd7ff','#ffd166','#ff6b9a','#b58cff','#ffffff'][i%6];
+        piece.style.setProperty('--drift',(-180+Math.random()*360)+'px');
+        piece.style.setProperty('--spin',(360+Math.random()*720)+'deg');
+        piece.style.animationDelay=(Math.random()*0.25)+'s';
+        document.body.appendChild(piece);
+        setTimeout(()=>piece.remove(),2200);
+    }
+}
+
 function checkTrackChange(){
     const zones=[...document.querySelectorAll('#activityTrack .drop-zone')];
     const allFilled=zones.every(z=>z.dataset.value);
@@ -5894,6 +6496,7 @@ function checkTrackChange(){
     if(correct){
         feedback.textContent='EXCELLENT! ALL ANSWERS ARE CORRECT!';
         feedback.classList.add('feedback-success');
+        launchConfetti();
         document.getElementById('trackNextBtn').disabled=false;
     }else{
         feedback.textContent='NOT QUITE! CHECK YOUR ANSWERS AGAIN.';
@@ -5946,8 +6549,10 @@ function revealRelationship(){
     if(correct){
         feedback.textContent='Excellent! You identified the relationship.';
         feedback.style.color='#55e58a';
-        feedback.style.fontSize='25px';
+        feedback.style.fontSize='32px';
+        feedback.style.fontWeight='1000';
         relationship.style.display='block';
+        launchConfetti();
     }else{
         feedback.textContent='Not quite. Look again at the pattern from 200 K to 400 K to 600 K.';
         feedback.style.color='#ff5f6d';
