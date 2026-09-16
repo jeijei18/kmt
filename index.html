@@ -2568,6 +2568,255 @@ html,body{
   font-weight: 750 !important;
 }
 </style>
+
+<style id="temperature-slider-360-end-to-end">
+/* Temperature slider: 360px tall, 30px thick, with labels aligned exactly end-to-end. */
+.temp-panel .slider-area{
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+}
+.temp-panel .temp-slider{
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+  width:30px !important;
+}
+.temp-panel .temp-scale{
+  height:360px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  font-size:30px !important;
+  line-height:1 !important;
+  justify-content:space-between !important;
+}
+.temp-panel .temp-scale span{
+  font-size:30px !important;
+  line-height:1 !important;
+  min-width:55px !important;
+  width:55px !important;
+}
+</style>
+
+
+<style id="temperature-values-exact-slider-alignment">
+/* Exact temperature scale alignment with the blue slider: 600 at top, 0 at bottom. */
+.temp-panel .slider-area{
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+}
+
+.temp-panel .temp-slider{
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+  width:30px !important;
+}
+
+/* The scale uses the exact same 360px vertical span as the slider. */
+.temp-panel .temp-scale{
+  height:360px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  justify-content:space-between !important;
+  font-size:30px !important;
+  line-height:1 !important;
+  box-sizing:border-box !important;
+}
+
+/* Keep each value centered on the same top/bottom positions as the slider. */
+.temp-panel .temp-scale span{
+  font-size:30px !important;
+  line-height:1 !important;
+  height:30px !important;
+  min-width:60px !important;
+  width:60px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+}
+
+/* Ensure the scale follows the slider vertically even under responsive overrides. */
+@media(max-height:800px){
+  .temp-panel .slider-area,
+  .temp-panel .temp-slider,
+  .temp-panel .temp-scale{
+    height:360px !important;
+    min-height:360px !important;
+    max-height:360px !important;
+  }
+  .temp-panel .temp-scale{
+    top:50% !important;
+    transform:translateY(-50%) !important;
+  }
+}
+</style>
+
+<style id="temperature-scale-exact-0-300-600">
+.temp-panel .temp-slider{height:360px !important; width:30px !important;}
+.temp-panel .slider-area{height:360px !important; min-height:360px !important; max-height:360px !important;}
+.temp-panel .temp-scale{
+  height:360px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  justify-content:space-between !important;
+  font-size:20px !important;
+  line-height:1 !important;
+}
+.temp-panel .temp-scale span{
+  font-size:20px !important;
+  line-height:1 !important;
+  width:50px !important;
+  min-width:50px !important;
+  text-align:left !important;
+}
+</style>
+
+<style id="TEMP-SCALE-REAL-FIX">
+/* FINAL temperature scale fix: values stay INSIDE the 360px slider track. */
+.temperature-control-frame .slider-area,
+.temp-panel .slider-area{
+  position:relative !important;
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+}
+
+/* The blue slider itself is the 360px reference line. */
+.temperature-control-frame .temp-slider,
+.temp-panel .temp-slider{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:30px !important;
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+  margin:0 !important;
+  transform:translate(-50%,-50%) !important;
+}
+
+/* 7 values, top-to-bottom: 600 500 400 300 200 100 0.
+   18px text is kept completely inside the slider's 360px span. */
+.temperature-control-frame .temp-scale,
+.temp-panel .temp-scale{
+  position:absolute !important;
+  left:calc(50% + 34px) !important;
+  right:auto !important;
+  top:9px !important;
+  width:55px !important;
+  height:342px !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  align-items:flex-start !important;
+  box-sizing:border-box !important;
+  transform:none !important;
+  z-index:10 !important;
+  font-size:18px !important;
+  line-height:18px !important;
+}
+
+.temperature-control-frame .temp-scale span,
+.temp-panel .temp-scale span{
+  display:block !important;
+  width:55px !important;
+  min-width:55px !important;
+  height:18px !important;
+  min-height:18px !important;
+  margin:0 !important;
+  padding:0 !important;
+  font-size:18px !important;
+  line-height:18px !important;
+  font-weight:800 !important;
+  text-align:left !important;
+  transform:none !important;
+  white-space:nowrap !important;
+}
+</style>
+
+
+<style id="temperature-scale-final-no-overflow">
+/* FINAL TEMPERATURE SCALE:
+   Keep all labels inside the frame while aligning their centers to the
+   full 360px slider scale: 600 top -> 300 middle -> 0 bottom. */
+.temperature-control-frame .slider-area{
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+  position:relative !important;
+  overflow:hidden !important;
+}
+.temperature-control-frame .temp-slider{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+  width:30px !important;
+  z-index:4 !important;
+}
+.temperature-control-frame .temp-scale{
+  position:absolute !important;
+  left:calc(50% + 40px) !important;
+  right:auto !important;
+  top:0 !important;
+  width:48px !important;
+  height:360px !important;
+  margin:0 !important;
+  padding:9px 0 !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  align-items:flex-start !important;
+  overflow:hidden !important;
+  z-index:5 !important;
+}
+.temperature-control-frame .temp-scale span{
+  display:block !important;
+  width:48px !important;
+  min-width:48px !important;
+  height:18px !important;
+  min-height:18px !important;
+  max-height:18px !important;
+  margin:0 !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  font-size:16px !important;
+  line-height:18px !important;
+  font-weight:800 !important;
+  text-align:left !important;
+  white-space:nowrap !important;
+  transform:none !important;
+}
+/* Keep the slider/value relationship visually centered on the panel. */
+@media(max-width:1050px){
+  .temperature-control-frame .temp-scale{
+    left:calc(50% + 38px) !important;
+  }
+}
+@media(max-height:800px){
+  .temperature-control-frame .slider-area{
+    height:360px !important;
+  }
+  .temperature-control-frame .temp-slider{
+    height:360px !important;
+  }
+  .temperature-control-frame .temp-scale{
+    top:0 !important;
+    height:360px !important;
+    padding-top:9px !important;
+    padding-bottom:9px !important;
+  }
+}
+</style>
+
 </head>
 
 
@@ -3830,7 +4079,7 @@ const chamber={
 function updateChamber(){
     /* Keep the chamber centered above the lab table, with enough space
        underneath for the heat/cold source and above the NEXT button. */
-    chamber.cx=canvasWidth*.50;
+    chamber.cx=canvasWidth*.57;
     chamber.rx=Math.min(canvasWidth*.30,250);
 
     /* Increase the chamber height upward only:
@@ -5909,6 +6158,61 @@ document.addEventListener('DOMContentLoaded',()=>{
     window.addEventListener('blur', stopHold);
 })();
 </script>
+
+<style id="wider-left-lab-frames">
+/* Slightly widen the frames on the left side only. Keep their left edge in place. */
+#lab > .control-panel.particle-control-frame{
+    width:290px !important;
+    box-sizing:border-box !important;
+}
+#lab > .control-panel.particle-control-frame .particle-count,
+#lab > .control-panel.particle-control-frame .motion-meter-box{
+    width:100% !important;
+    box-sizing:border-box !important;
+}
+@media(max-width:1050px){
+    #lab > .control-panel.particle-control-frame{width:265px !important;}
+}
+@media(max-width:800px){
+    #lab > .control-panel.particle-control-frame{width:220px !important;}
+}
+</style>
+
+<style id="final-live-k-size-fix">
+/* Make the K beside the live temperature value the same size as the live number. */
+.temperature-control-frame .temp-value .temp-unit{
+    font-size:62px !important;
+    line-height:.98 !important;
+    font-weight:1000 !important;
+    letter-spacing:-1px !important;
+    margin-left:6px !important;
+    vertical-align:baseline !important;
+}
+</style>
+
+<style id="FINAL-TEMP-FRAME-185PX">
+/* FINAL: make the VISIBLE Temperature frame exactly 185px wide. */
+#lab .temperature-control-frame{
+  width:185px !important;
+  min-width:185px !important;
+  max-width:185px !important;
+  box-sizing:border-box !important;
+}
+@media(max-width:1050px){
+  #lab .temperature-control-frame{
+    width:185px !important;
+    min-width:185px !important;
+    max-width:185px !important;
+  }
+}
+@media(max-width:800px){
+  #lab .temperature-control-frame{
+    width:185px !important;
+    min-width:185px !important;
+    max-width:185px !important;
+  }
+}
+</style>
 </body>
 
 <style id="header-final-position-fix">
@@ -5986,6 +6290,75 @@ document.addEventListener('DOMContentLoaded',()=>{
 }
 #lab > .control-panel .lab-status-box{
   display:none !important;
+}
+</style>
+
+
+<style id="left-frames-310-neon-thick">
+/* Widen the left-side control frames to 310px and strengthen the neon-blue outlines. */
+#lab > .control-panel.particle-control-frame,
+#lab > .temp-panel.temperature-control-frame,
+#lab > .average-ke-display {
+    width:310px !important;
+    box-sizing:border-box !important;
+    border-width:4px !important;
+    border-style:solid !important;
+    border-color:#4ddcff !important;
+    box-shadow:0 0 6px rgba(77,220,255,.95), 0 0 16px rgba(38,180,255,.65), inset 0 0 8px rgba(38,180,255,.12) !important;
+}
+
+#lab > .control-panel.particle-control-frame .particle-count,
+#lab > .control-panel.particle-control-frame .motion-meter-box {
+    width:100% !important;
+    box-sizing:border-box !important;
+}
+
+@media(max-width:1050px){
+    #lab > .control-panel.particle-control-frame,
+    #lab > .temp-panel.temperature-control-frame,
+    #lab > .average-ke-display {
+        width:285px !important;
+    }
+}
+
+@media(max-width:800px){
+    #lab > .control-panel.particle-control-frame,
+    #lab > .temp-panel.temperature-control-frame,
+    #lab > .average-ke-display {
+        width:245px !important;
+    }
+}
+</style>
+
+
+<style id="ACTUAL-CENTER-MAIN-KMT-GROUP">
+/* Center the chamber and its related elements in the usable space between the side panels. */
+#lab > .sim-card{
+  left:calc(50% + 58px) !important;
+  right:auto !important;
+  transform:translate(-50%,-45%) !important;
+}
+
+#lab > .simulation-next-btn{
+  left:calc(50% + 58px) !important;
+  right:auto !important;
+  transform:translateX(-50%) !important;
+}
+
+/* The chamber is drawn from the exact center of the canvas. */
+#lab > .sim-card #simulationCanvas{
+  left:0 !important;
+  top:0 !important;
+  width:100% !important;
+  height:100% !important;
+  margin:0 !important;
+}
+
+/* Keep the KMT LAB heading centered on the full lab header. */
+#lab > .lab-header .lab-title{
+  left:50% !important;
+  right:auto !important;
+  transform:translate(-50%,-50%) !important;
 }
 </style>
 
@@ -6548,14 +6921,15 @@ html, body { overflow:hidden !important; height:100% !important; }
 .temperature-control-frame .temp-scale span{
   display:block !important;
   width:36px !important;
-  height:14px !important;
-  min-height:14px !important;
+  height:0 !important;
+  min-height:0 !important;
   margin:0 !important;
   padding:0 !important;
-  line-height:14px !important;
-  font-size:12px !important;
+  line-height:30px !important;
+  font-size:30px !important;
   font-weight:850 !important;
   text-align:left !important;
+  transform:translateY(-15px) !important;
   white-space:nowrap !important;
 }
 /* Make the AKE value readable without allowing it to escape the frame. */
@@ -6739,4 +7113,266 @@ document.addEventListener('DOMContentLoaded',function(){
 <style id="remove-temperature-background-reflection">
 /* Remove the decorative reflection that was appearing behind the Temperature frame. */
 .lab-table-reflection{display:none !important;}
+</style>
+<style id="FINAL-TEMP-SCALE-OVERRIDE">
+/* FINAL: temperature scale is locked to the actual 360px slider. */
+.temperature-control-frame .slider-area{
+  position:relative !important;
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+  overflow:hidden !important;
+}
+
+/* Blue slider = exact 360px reference, top to bottom. */
+.temperature-control-frame .temp-slider{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:30px !important;
+  height:360px !important;
+  min-height:360px !important;
+  max-height:360px !important;
+  margin:0 !important;
+  transform:translate(-50%,-50%) !important;
+}
+
+/* Labels occupy the SAME 360px height as the slider.
+   600 is at the top, 300 is exactly the middle, 0 is at the bottom. */
+.temperature-control-frame .temp-scale{
+  position:absolute !important;
+  left:calc(50% + 40px) !important;
+  right:auto !important;
+  top:0 !important;
+  width:45px !important;
+  height:360px !important;
+  margin:0 !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  align-items:flex-start !important;
+  overflow:hidden !important;
+  transform:none !important;
+  z-index:10 !important;
+  font-size:16px !important;
+  line-height:16px !important;
+}
+
+.temperature-control-frame .temp-scale span{
+  display:block !important;
+  flex:0 0 16px !important;
+  width:45px !important;
+  min-width:45px !important;
+  height:16px !important;
+  min-height:16px !important;
+  max-height:16px !important;
+  margin:0 !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  font-size:16px !important;
+  line-height:16px !important;
+  font-weight:800 !important;
+  text-align:left !important;
+  white-space:nowrap !important;
+  transform:none !important;
+}
+</style>
+
+<style id="FINAL-LIVE-TEMP-K-MATCH">
+/* FINAL OVERRIDE: make the live temperature number and its K exactly the same size. */
+.temperature-control-frame .temp-value .temp-number,
+.temperature-control-frame .temp-value .temp-unit{
+  font-size:56px !important;
+  line-height:.95 !important;
+  font-weight:1000 !important;
+  letter-spacing:-1px !important;
+  vertical-align:baseline !important;
+}
+.temperature-control-frame .temp-value .temp-unit{
+  margin-left:4px !important;
+  color:#d9f5ff !important;
+  -webkit-text-fill-color:#d9f5ff !important;
+}
+</style>
+
+<style id="FINAL-K-54PX">
+/* K beside the live temperature value */
+#temperatureValue .temp-unit, .temp-value .temp-unit { font-size:54px !important; line-height:1 !important; font-weight:900 !important; vertical-align:baseline !important; }
+</style>
+
+<style id="K54-LAST-OVERRIDE">
+/* LAST OVERRIDE: K beside live temperature is exactly 54px. */
+#temperatureValue .temp-unit,
+#temperatureValue span.temp-unit,
+.temperature-control-frame #temperatureValue .temp-unit,
+.temperature-control-frame .temp-value .temp-unit {
+  display:inline-block !important;
+  font-size:54px !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  letter-spacing:-1px !important;
+  vertical-align:baseline !important;
+  transform:none !important;
+  scale:1 !important;
+  width:auto !important;
+  height:auto !important;
+  margin-left:4px !important;
+}
+</style>
+
+<style id="FINAL-TEMP-FRAME-195-ROUND">
+.temperature-control-frame{
+  width:195px !important;
+  border-radius:22px !important;
+}
+@media(max-width:1050px){
+  .temperature-control-frame{width:195px !important;}
+}
+@media(max-width:800px){
+  .temperature-control-frame{width:195px !important;}
+}
+</style>
+
+<style id="temperature-frame-width-185-final">
+/* Temperature KMT Lab frame width only */
+.temperature-control-frame{width:185px !important;}
+@media(max-width:1050px){.temperature-control-frame{width:185px !important;}}
+@media(max-width:800px){.temperature-control-frame{width:185px !important;}}
+</style>
+
+<style id="FINAL-TEMP-FRAME-195PX">
+/* Final visible Temperature frame width */
+.temperature-control-frame{
+  width:195px !important;
+  box-sizing:border-box !important;
+}
+@media(max-width:1050px){
+  .temperature-control-frame{width:195px !important;}
+}
+@media(max-width:800px){
+  .temperature-control-frame{width:195px !important;}
+}
+</style>
+<style id="ABSOLUTE-FINAL-TEMP-WIDTH-195">
+/* Temperature frame: exact visible outer width = 195px at every responsive breakpoint. */
+#lab > .temp-panel.temperature-control-frame {
+  width:195px !important;
+  min-width:195px !important;
+  max-width:195px !important;
+  flex:0 0 195px !important;
+  box-sizing:border-box !important;
+}
+@media (max-width:1050px) {
+  #lab > .temp-panel.temperature-control-frame {
+    width:195px !important;
+    min-width:195px !important;
+    max-width:195px !important;
+    flex-basis:195px !important;
+  }
+}
+@media (max-width:800px) {
+  #lab > .temp-panel.temperature-control-frame {
+    width:195px !important;
+    min-width:195px !important;
+    max-width:195px !important;
+    flex-basis:195px !important;
+  }
+}
+</style>
+
+<style id="REMOVE-TEMP-BACKGROUND-RECTANGLE">
+/* Remove the decorative rectangular wall panel behind the Temperature section. */
+#lab .wall-panel{display:none !important;}
+</style>
+
+<style id="FINAL-CENTER-KMT-LAB-ELEMENTS">
+/* Center the main KMT lab composition without changing the side control panels. */
+#lab > .sim-card{
+    left:50% !important;
+    right:auto !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    transform:translate(-50%,-45%) !important;
+}
+
+/* Keep the chamber canvas centered within the main simulation area. */
+#lab > .sim-card #simulationCanvas{
+    left:0 !important;
+    right:auto !important;
+    margin:0 !important;
+}
+
+/* Keep NEXT exactly centered on the viewport. */
+#lab > .simulation-next-btn{
+    left:50% !important;
+    right:auto !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    transform:translateX(-50%) !important;
+}
+
+/* Keep the KMT LAB title exactly centered in the header. */
+#lab > .lab-header .lab-title{
+    position:absolute !important;
+    left:50% !important;
+    right:auto !important;
+    top:50% !important;
+    margin:0 !important;
+    transform:translate(-50%,-50%) !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+}
+</style>
+
+<style id="FINAL-MAIN-CENTER-RIGHT-SHIFT">
+/* Shift the central chamber composition slightly right to visually center it
+   between the left and right control areas. */
+#lab > .simulation-next-btn{
+    left:calc(50% + 7%) !important;
+    right:auto !important;
+    transform:translateX(-50%) !important;
+}
+</style>
+
+<style id="FINAL-ALL-MAIN-ELEMENTS-CENTER">
+/* Align the header title and NEXT button with the chamber's actual center. */
+#lab > .lab-header .lab-title{
+  left:57% !important;
+  right:auto !important;
+  transform:translate(-50%,-50%) !important;
+}
+#lab > .simulation-next-btn{
+  left:57% !important;
+  right:auto !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  transform:translateX(-50%) !important;
+}
+</style>
+
+<style id="FINAL-PROPER-CENTER-KMT-NEXT">
+/* FINAL: align KMT LAB and NEXT with the actual chamber center.
+   The chamber is at 57% of the centered simulation canvas, which places
+   its visible center at approximately 55% of the lab viewport. */
+#lab > .lab-header .lab-title{
+  position:absolute !important;
+  left:55% !important;
+  right:auto !important;
+  top:50% !important;
+  margin:0 !important;
+  transform:translate(-50%,-50%) !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+}
+
+#lab > .simulation-next-btn{
+  position:fixed !important;
+  left:55% !important;
+  right:auto !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  transform:translateX(-50%) !important;
+}
 </style>
